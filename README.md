@@ -1,0 +1,4 @@
+# Skeletor
+
+FLask + Mongo + Docker
+
