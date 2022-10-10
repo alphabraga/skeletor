@@ -1,4 +1,4 @@
 # Skeletor
 
-FLask + Mongo + Docker
+Flask + Mongo + Docker
 
