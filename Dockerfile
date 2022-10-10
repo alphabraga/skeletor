@@ -6,4 +6,6 @@ WORKDIR /src
 
 RUN pip install -r requirements.txt
 
-ENTRYPOINT ["flask", "run", "--debugger", "--reload", "-h", "'0.0.0.0'"]
+EXPOSE 5000
+
+CMD flask run -h '0.0.0.0'
