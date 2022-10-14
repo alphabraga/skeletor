@@ -1,11 +1,25 @@
-FROM python:3.8-alpine
+FROM python:3.8-alpine as base
 
-COPY . /src
+COPY ./requirements.txt /tmp
 
-WORKDIR /src
+RUN mkdir /install
 
-RUN pip install -r requirements.txt
+WORKDIR /install
+
+RUN pip install --prefix=/install -r /tmp/requirements.txt
+
+from base 
+
+COPY --from=base /install /usr/local
+
+RUN mkdir /app
+
+COPY . /app/
+
+WORKDIR /app
 
 EXPOSE 5000
+
+ENV FLASK_ENV=development
 
 CMD flask run -h '0.0.0.0'
